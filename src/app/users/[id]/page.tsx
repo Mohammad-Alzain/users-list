@@ -7,7 +7,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
 type Props = {
-  params: { id: string };
+  params: any;
   searchParams?: { [key: string]: string | string[] | undefined };
 };
 
@@ -59,11 +59,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   }
 }
 
-export default async function UserDetailsPage({
-  params,
-}: {
-  params: { id: string };
-}) {
+export default async function UserDetailsPage({ params }: { params: any }) {
   // Await the params object before accessing its properties
 
   try {
