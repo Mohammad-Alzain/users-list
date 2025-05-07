@@ -4,7 +4,7 @@ import {
 } from "@/modules/users/core/api/users-apis";
 import UserDetailsView from "@/modules/users/ui/components/UserDetails";
 import { notFound } from "next/navigation";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 
 export async function generateMetadata({
   params,
@@ -21,13 +21,13 @@ export async function generateMetadata({
     }
 
     return {
-      title: `${user.firstName + user.lastName}'s Profile` || "User Profile",
-      description: `View the profile of ${user.firstName + user.lastName}. ${
+      title: `${user.firstName} ${user.lastName}'s Profile` || "User Profile",
+      description: `View the profile of ${user.firstName} ${user.lastName}. ${
         user.username || ""
       }`,
       openGraph: {
-        title: `${user.firstName + user.lastName}'s Profile` || "User Profile",
-        description: `View the profile of ${user.firstName + user.lastName}. ${
+        title: `${user.firstName} ${user.lastName}'s Profile` || "User Profile",
+        description: `View the profile of ${user.firstName} ${user.lastName}. ${
           user.username || ""
         }`,
         images: user.image ? [{ url: user.image }] : [],
@@ -35,8 +35,8 @@ export async function generateMetadata({
       },
       twitter: {
         card: "summary",
-        title: `${user.firstName + user.lastName}'s Profile` || "User Profile",
-        description: `View the profile of ${user.firstName + user.lastName}. ${
+        title: `${user.firstName} ${user.lastName}'s Profile` || "User Profile",
+        description: `View the profile of ${user.firstName} ${user.lastName}. ${
           user.username || ""
         }`,
         images: user.image ? [{ url: user.image }] : [],
@@ -49,6 +49,7 @@ export async function generateMetadata({
     };
   }
 }
+
 export default async function UserDetailsPage({
   params,
 }: {
