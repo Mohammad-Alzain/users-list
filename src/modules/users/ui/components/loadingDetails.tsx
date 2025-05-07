@@ -13,7 +13,6 @@ export default function LoadingUserList() {
         <div className="flex flex-wrap gap-4">
           <Skeleton className="h-16 w-32" />
           <Skeleton className="h-16 w-32" />
-          <Skeleton className="h-10 w-28" />
         </div>
       </div>
 
