@@ -8,7 +8,6 @@ import type { Metadata } from "next";
 
 type Props = {
   params: any;
-  searchParams?: { [key: string]: string | string[] | undefined };
 };
 
 export async function generateMetadata(props: Props): Promise<Metadata> {
