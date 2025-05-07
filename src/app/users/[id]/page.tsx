@@ -11,9 +11,19 @@ type Props = {
   searchParams: { [key: string]: string | string[] | undefined };
 };
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata(props: Props): Promise<Metadata> {
+  // Await the params object before accessing its properties
+  const params = await props.params;
+
   try {
-    const user = await getUserById(params.id);
+    const id = params.id;
+    if (!id) {
+      return {
+        title: "User Not Found",
+      };
+    }
+
+    const user = await getUserById(id);
 
     if (!user) {
       return {
@@ -51,9 +61,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-export default async function UserDetailsPage({ params }: Props) {
+export default async function UserDetailsPage(props: Props) {
+  // Await the params object before accessing its properties
+  const params = await props.params;
+
   try {
-    const user = await getUserById(params.id);
+    const id = params.id;
+    if (!id) {
+      notFound();
+    }
+
+    const user = await getUserById(id);
 
     if (!user) {
       notFound();
