@@ -3,19 +3,7 @@
 import type React from "react";
 import { useState, useCallback, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  Search,
-  Filter,
-  Loader2,
-  X,
-  ChevronDown,
-  SlidersHorizontal,
-  Users,
-  UserPlus,
-  Download,
-  Upload,
-  RefreshCw,
-} from "lucide-react";
+import { Search, Filter, Loader2, X, ChevronDown, Users } from "lucide-react";
 import debounce from "lodash.debounce";
 
 import { Button } from "@/components/ui/button";
@@ -29,15 +17,6 @@ import {
 } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import type { User } from "../../core/types";
 import { filterUsersByHairColor, searchUsers } from "../../core/api/users-apis";
@@ -291,37 +270,6 @@ export default function UserDirectory({
               <p className="font-semibold">{users.length}</p>
             </div>
           </div>
-
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="outline" size="sm" className="gap-1.5">
-                <SlidersHorizontal className="h-4 w-4" />
-                Actions
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-56">
-              <DropdownMenuLabel>User Management</DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              <DropdownMenuGroup>
-                <DropdownMenuItem>
-                  <UserPlus className="h-4 w-4 mr-2" />
-                  Add New User
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Download className="h-4 w-4 mr-2" />
-                  Export Users
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Upload className="h-4 w-4 mr-2" />
-                  Import Users
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <RefreshCw className="h-4 w-4 mr-2" />
-                  Refresh Data
-                </DropdownMenuItem>
-              </DropdownMenuGroup>
-            </DropdownMenuContent>
-          </DropdownMenu>
         </div>
       </div>
 
