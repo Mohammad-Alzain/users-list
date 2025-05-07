@@ -6,15 +6,12 @@ import UserDetailsView from "@/modules/users/ui/components/UserDetails";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
-interface PageParams {
-  params: {
-    id: string;
-  };
-}
+type Props = {
+  params: { id: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+};
 
-export async function generateMetadata({
-  params,
-}: PageParams): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   try {
     const user = await getUserById(params.id);
 
@@ -54,7 +51,7 @@ export async function generateMetadata({
   }
 }
 
-export default async function UserDetailsPage({ params }: PageParams) {
+export default async function UserDetailsPage({ params }: Props) {
   try {
     const user = await getUserById(params.id);
 
