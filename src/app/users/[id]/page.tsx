@@ -8,15 +8,13 @@ import type { Metadata } from "next";
 
 type Props = {
   params: { id: string };
-  searchParams: { [key: string]: string | string[] | undefined };
+  searchParams?: { [key: string]: string | string[] | undefined };
 };
 
 export async function generateMetadata(props: Props): Promise<Metadata> {
   // Await the params object before accessing its properties
-  const params = await props.params;
-
+  const { id } = await props.params;
   try {
-    const id = params.id;
     if (!id) {
       return {
         title: "User Not Found",
@@ -61,12 +59,15 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   }
 }
 
-export default async function UserDetailsPage(props: Props) {
+export default async function UserDetailsPage({
+  params,
+}: {
+  params: { id: string };
+}) {
   // Await the params object before accessing its properties
-  const params = await props.params;
 
   try {
-    const id = params.id;
+    const { id } = await params;
     if (!id) {
       notFound();
     }
