@@ -2,7 +2,7 @@ import {
   getUserById,
   getUsersWithFilters,
 } from "@/modules/users/core/api/users-apis";
-import UserDetailsView from "@/modules/users/ui/components/UserDetails";
+import UserDetailsView from "@/modules/users/ui/pages/UserDetails";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
@@ -11,7 +11,6 @@ type Props = {
 };
 
 export async function generateMetadata(props: Props): Promise<Metadata> {
-  // Await the params object before accessing its properties
   const { id } = await props.params;
   try {
     if (!id) {
@@ -59,8 +58,6 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 }
 
 export default async function UserDetailsPage({ params }: { params: any }) {
-  // Await the params object before accessing its properties
-
   try {
     const { id } = await params;
     if (!id) {

@@ -41,7 +41,7 @@ import {
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import type { User } from "../../core/types";
 import { filterUsersByHairColor, searchUsers } from "../../core/api/users-apis";
-import UserCard from "./UserCard";
+import UserCard from "../components/UserCard";
 
 interface UserDirectoryProps {
   initialUsers: User[];
